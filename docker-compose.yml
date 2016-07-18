@@ -1,0 +1,23 @@
+scrapy-cluster:
+    image: weilaihui/scrapy-redis
+    volumes:
+    - ~/workspace/github/scrapy-cluster/crawler:/crawler
+    working_dir: /crawler
+    command: scrapy crawl huajiao
+    links:
+#    - kafka
+    - redis
+
+#kafka:
+#    image: ches/kafka
+#    links:
+#    - zookeeper
+#    command: /start.sh
+#
+#zookeeper:
+#  image: jplock/zookeeper
+
+redis:
+    image: redis
+    ports:
+    - "6379:6379"
